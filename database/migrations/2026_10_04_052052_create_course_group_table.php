@@ -6,24 +6,27 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCourseGroupTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('course_group', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('course_id');
+            $table->unsignedBigInteger('group_id');
             $table->timestamps();
+
+            $table->primary(['course_id', 'group_id']);
+
+            $table->foreign('course_id')
+                ->references('id')
+                ->on('courses')
+                ->onDelete('cascade');
+
+            $table->foreign('group_id')
+                ->references('id')
+                ->on('groups')
+                ->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('course_group');

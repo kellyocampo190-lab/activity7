@@ -6,34 +6,23 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCoursesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-       Schema::create('courses', function (Blueprint $table) {
-    $table->id();
-    $table->string('course_key', 20)->unique();
-    $table->string('title', 150);
-    $table->string('cover', 255);
-    $table->text('content');
-    $table->unsignedBigInteger('robotics_kit_id');
-    $table->timestamps();
+        Schema::create('courses', function (Blueprint $table) {
+            $table->id();
+            $table->string('course_key')->unique();
+            $table->string('title');
+            $table->string('cover')->nullable();
+            $table->text('content');
+            $table->unsignedBigInteger('robotics_kit_id');
+            $table->timestamps();
 
-    $table->foreign('robotics_kit_id')
-        ->references('id')
-        ->on('robotics_kits')
-        ->onDelete('restrict');
-});
+            $table->foreign('robotics_kit_id')
+                ->references('id')
+                ->on('robotics_kits');
+        });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('courses');
