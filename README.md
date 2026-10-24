@@ -1,62 +1,81 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Activity 7 – Robotics School Database
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+This repository contains the Laravel 7 project developed for Activity 7 of the Web Application Design course. The project models the relational database required by a small robotics school using Eloquent ORM.
 
-## About Laravel
+## Student Information
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Student:** Giovanna Ocampo Lopez
+- **Student ID:** AL03009988
+- **Course:** Web Application Design
+- **Lecturer:** Jonathan Alexis Puente Guerrero
+- **Activity:** Activity 7
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Project Description
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+The purpose of this project is to model a platform for a robotics school. The platform manages users with student, teacher, or administrator roles. Students can belong to groups, groups can have several courses, and every course is associated with a robotics kit and didactic material.
 
-## Learning Laravel
+## Main Entities
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Users
+- Roles
+- Groups
+- Courses
+- Robotics kits
+- Didactic materials
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+The `course_group` table supports the many-to-many relationship between courses and groups.
 
-## Laravel Sponsors
+## Technologies
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- PHP
+- Laravel 7
+- Eloquent ORM
+- MySQL
+- MySQL Workbench
+- Git and GitHub
 
-### Premium Partners
+## ER Diagram
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+The following diagram represents the entities, attributes, primary keys, foreign keys, and relationships used in the project.
 
-## Contributing
+![Activity 7 ER Diagram](diagrams/activity7-er-diagram.png)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Database
 
-## Code of Conduct
+The database structure was created through Laravel migrations. The exported MySQL database is available in:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```text
+database/activity7.sql
+```
 
-## Security Vulnerabilities
+## Project Setup
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Install the project dependencies:
 
-## License
+```bash
+composer install
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# activity7
+Create the environment file:
+
+```bash
+cp .env.example .env
+```
+
+Generate the application key:
+
+```bash
+php artisan key:generate
+```
+
+Configure the MySQL connection in `.env`, and then execute the migrations:
+
+```bash
+php artisan migrate
+```
+
+## Repository
+
+GitHub repository:
+
+https://github.com/kellyocampo190-lab/activity7
